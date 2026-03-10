@@ -50,7 +50,12 @@ export const config = {
 
     /** Wallet private key (required for most scripts). Use config.requirePrivateKey() when needed. */
     privateKey: envString("PRIVATE_KEY"),
-    requirePrivateKey: () => requireEnv("PRIVATE_KEY"),
+    requirePrivateKey: () => {
+        if (config.bot.dryRun) {
+            throw new Error("PRIVATE_KEY is not required in DRY_RUN mode");
+        }
+        return requireEnv("PRIVATE_KEY");
+    },
 
     /** Use Polymarket proxy/smart wallet (set true only if you trade via proxy; default EOA) */
     useProxyWallet: envBool("USE_PROXY_WALLET", false),
@@ -66,6 +71,8 @@ export const config = {
 
     /** Bot runner settings */
     bot: {
+        dryRun: envBool("DRY_RUN", false),
+        simulationMode: envBool("SIMULATION_MODE", false),
         minUsdcBalance: envNumber("BOT_MIN_USDC_BALANCE", 1),
         waitForNextMarketStart: envBool("COPYTRADE_WAIT_FOR_NEXT_MARKET_START", false),
     },
@@ -84,10 +91,10 @@ export const config = {
         tickSize: (envString("COPYTRADE_TICK_SIZE", envString("GABAGOOL_TICK_SIZE", "0.01")!) ??
             "0.01") as "0.01" | "0.001" | "0.0001" | string,
         negRisk: envBool("COPYTRADE_NEG_RISK", envBool("GABAGOOL_NEG_RISK", false)),
-        priceBuffer: envNumber("COPYTRADE_PRICE_BUFFER", 0), // Price buffer in cents for order execution (faster fills)
-        fireAndForget: envBool("COPYTRADE_FIRE_AND_FORGET", true), // Don't wait for order confirmation (faster)
-        minBalanceUsdc: envNumber("COPYTRADE_MIN_BALANCE_USDC", 1), // Minimum balance before stopping
-        maxBuyCountsPerSide: envNumber("COPYTRADE_MAX_BUY_COUNTS_PER_SIDE", 0), // Maximum buy counts per side (UP/DOWN) per market before pausing
+        priceBuffer: envNumber("COPYTRADE_PRICE_BUFFER", 0),
+        fireAndForget: envBool("COPYTRADE_FIRE_AND_FORGET", true),
+        minBalanceUsdc: envNumber("COPYTRADE_MIN_BALANCE_USDC", 1),
+        maxBuyCountsPerSide: envNumber("COPYTRADE_MAX_BUY_COUNTS_PER_SIDE", 0),
     },
 
     /** Redeem script args via env */
@@ -96,5 +103,3 @@ export const config = {
         indexSets: envString("INDEX_SETS"),
     },
 };
-
-

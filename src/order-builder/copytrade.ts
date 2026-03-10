@@ -671,6 +671,15 @@ export class CopytradeArbBot {
         // Log buy
         logger.info(`BUY: ${leg} ~${estimatedShares} shares @ limit ${limitPrice.toFixed(4)} (${orderAmount.toFixed(2)} USDC)`);
 
+        // Skip actual order placement in simulation mode
+        if (config.bot.simulationMode) {
+            logger.info(`[SIMULATION] Would place order: ${leg} ${size} shares @ ${limitPrice.toFixed(4)} (${orderAmount.toFixed(2)} USDC)`);
+            return true;
+        }
+
+        // Place order IMMEDIATELY (await to ensure it's placed within 10ms)
+        logger.info(`BUY: ${leg} ~${estimatedShares} shares @ limit ${limitPrice.toFixed(4)} (${orderAmount.toFixed(2)} USDC)`);
+
         // Place order IMMEDIATELY (await to ensure it's placed within 10ms)
         try {
             const response = await this.client.createAndPostOrder(
