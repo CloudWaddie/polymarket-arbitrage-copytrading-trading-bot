@@ -4,17 +4,9 @@ FROM node:18-slim
 RUN apt-get update && apt-get install -y \
     curl \
     wget \
-    gnupg \
+    openvpn \
     ca-certificates \
-    iptables \
     && rm -rf /var/lib/apt/lists/*
-
-# Install Windscribe CLI
-RUN echo "deb https://repo.windscribe.com/ubuntu focal main" | tee /etc/apt/sources.list.d/windscribe-repo.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-key FDF7FDB2BAEC919F && \
-    apt-get update && \
-    apt-get install -y windscribe-cli && \
-    rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
@@ -33,6 +25,9 @@ COPY .env* ./
 # Create data directory for state files
 RUN mkdir -p src/data logs
 
+# Create directory for VPN config
+RUN mkdir -p /etc/openvpn
+
 # Expose port for monitoring (optional)
 EXPOSE 3000
 
@@ -44,19 +39,21 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 RUN echo '#!/bin/bash\n\
 set -e\n\
 \n\
-echo "Starting Windscribe VPN..."\n\
-# Login to Windscribe\n\
-windscribe login << EOF\n\
-$WINDSCRIBE_USERNAME\n\
-$WINDSCRIBE_PASSWORD\n\
-EOF\n\
+echo "Starting OpenVPN with Windscribe Hong Kong config..."\n\
 \n\
-# Connect to Hong Kong\n\
-windscribe connect HK\n\
+# Download Windscribe Hong Kong OpenVPN config\n\
+# Note: This requires manual setup - see docs/DOCKER_DEPLOYMENT.md\n\
+if [ ! -f /etc/openvpn/HongKong.ovpn ]; then\n\
+    echo "ERROR: VPN config not found at /etc/openvpn/HongKong.ovpn"\n\
+    echo "Please mount the config file or use Windscribe CLI version"\n\
+    exit 1\n\
+fi\n\
 \n\
-echo "Verifying VPN connection..."\n\
-sleep 5\n\
-windscribe status\n\
+# Start OpenVPN in background\n\
+openvpn --config /etc/openvpn/HongKong.ovpn --daemon\n\
+\n\
+echo "Waiting for VPN connection..."\n\
+sleep 10\n\
 \n\
 echo "Checking IP address..."\n\
 curl https://ipinfo.io\n\
