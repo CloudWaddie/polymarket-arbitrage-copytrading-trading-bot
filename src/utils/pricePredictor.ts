@@ -31,7 +31,7 @@ export class AdaptivePricePredictor {
     private readonly maxHistorySize = 10;
     
     // Noise filtering - ignore changes < 0.02 (only filter UNDER 0.02, consider >= 0.02)
-    private readonly noiseThreshold = 0.02; // Ignore price changes < 0.02 (must be >= 0.02 to be considered)
+    private readonly noiseThreshold = 0.05; // QUICK WIN #1: Stricter pole detection (was 0.02)
     private smoothedPrice: number | null = null; // Current smoothed price
     private lastAddedPrice: number | null = null; // Last price added to history
     private smoothingAlpha = 0.5; // EMA smoothing factor (0.5 = balanced, more responsive to actual price changes)
@@ -102,6 +102,13 @@ export class AdaptivePricePredictor {
      */
     public updateAndPredict(price: number, timestamp: number): PricePrediction | null {
         const startTime = Date.now();
+        
+        // QUICK WIN #2: Skip predictions in first 2 minutes of each 15m cycle (too noisy)
+        const now = new Date();
+        const minuteInCycle = now.getMinutes() % 15;
+        if (minuteInCycle < 2) {
+            return null; // First 2 minutes are too noisy
+        }
         
         // CRITICAL: Stop predictions if price is outside valid range (0.003 to 0.97)
         if (price < this.minPrice || price > this.maxPrice) {
@@ -732,6 +739,18 @@ export class AdaptivePricePredictor {
         confidence: number,
         features: ReturnType<typeof this.calculateFeatures>
     ): "BUY_UP" | "BUY_DOWN" | "HOLD" {
+        
+        // QUICK WIN #3: CRITICAL - Require momentum AND trend alignment
+        // If they contradict, don't trade
+        const momentumAligned = (direction === "up" && features.momentum > 0.005) ||
+                                (direction === "down" && features.momentum < -0.005);
+        const trendAligned = (direction === "up" && features.trend > 0.015) ||
+                             (direction === "down" && features.trend < -0.015);
+        
+        // If signals don't align, HOLD (don't trade)
+        if (!momentumAligned || !trendAligned) {
+            return "HOLD";
+        }
         
         // IMPROVED: More conservative signal generation to reduce false positives
         // Require higher confidence and stronger alignment

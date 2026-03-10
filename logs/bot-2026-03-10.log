@@ -5075,3 +5075,137 @@
 2026-03-10T09:06:36.456Z  INFO  📊 Down Ask 0.2290
 
 ===== LOG END 2026-03-10T09:06:36.632Z pid=7672 =====
+
+
+
+
+
+===== LOG START 2026-03-10T09:12:18.152Z pid=24744 =====
+
+
+
+
+[2026-03-10T09:12:18.153Z] ℹ️ INFO  Starting the bot...
+2026-03-10T09:12:18.204Z  INFO  wallet address 0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E
+[CLOB Client] request error {"status":400,"statusText":"Bad Request","data":{"error":"Could not create api key"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{},"headers":{"Accept":"*/*","Content-Type":"application/json","POLY_ADDRESS":"0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E","POLY_SIGNATURE":"0xd1e5e1862b0f2670b850a06a92615faed6de469363a191085a8c810058beceeb219532cd6fb84c2372366d5a45e888c06c042b08b8ead11bd220956ce1644f711b","POLY_TIMESTAMP":"1773133938","POLY_NONCE":"0","User-Agent":"@polymarket/clob-client","Connection":"keep-alive"},"method":"post","url":"https://clob.polymarket.com/auth/api-key","params":{}}}
+2026-03-10T09:12:19.083Z  INFO  Credential created successfully
+[2026-03-10T09:12:19.088Z] ℹ️ INFO  Credentials ready
+[2026-03-10T09:12:19.121Z] ℹ️ INFO  SIMULATION_MODE enabled - skipping allowances and balance check
+[2026-03-10T09:12:19.129Z] ℹ️ INFO  Skipping wait for next 15m market start (resume immediately from state)
+2026-03-10T09:12:19.168Z  INFO  Connecting to WebSocket: wss://ws-subscriptions-clob.polymarket.com/ws/market
+2026-03-10T09:12:19.838Z  INFO  WebSocket connected (market channel)
+2026-03-10T09:12:19.864Z  INFO  Subscribed to 0 token(s) for best_bid_ask updates (custom_feature_enabled: true)
+2026-03-10T09:12:19.875Z  INFO  WebSocket orderbook initialized
+2026-03-10T09:12:19.888Z  INFO  Starting CopytradeArbBot for markets: btc
+2026-03-10T09:12:19.903Z  INFO  Initializing market btc with slug btc-updown-15m-1773133200
+2026-03-10T09:12:20.092Z  INFO  Subscribed to 2 new token(s) (custom_feature_enabled: true)
+2026-03-10T09:12:20.673Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:20.675Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:20.722Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:20.728Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:20.958Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:20.971Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:21.235Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:21.237Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:21.462Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:21.481Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:21.935Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:21.970Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:22.194Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:22.224Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:22.622Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:22.638Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:22.853Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:22.859Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:23.272Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:23.285Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:25.106Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:25.115Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:25.726Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:25.735Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:25.915Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:25.928Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.252Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.262Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.532Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.555Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.567Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.605Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.617Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.635Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.696Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.718Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.738Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.755Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.884Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.902Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.914Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.924Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.951Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.959Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.974Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:26.983Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:26.998Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:27.000Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:27.007Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:27.009Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:27.023Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:27.033Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:27.037Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:27.047Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:27.048Z  INFO  📊 Up Ask ==========> 0.9800
+2026-03-10T09:12:27.049Z  INFO  📊 Down Ask 0.0300
+2026-03-10T09:12:27.049Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.050Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.051Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.053Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.079Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.091Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.269Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.292Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.297Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.298Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.299Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.300Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.395Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.407Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.490Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.495Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.507Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.508Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.601Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.616Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.784Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.796Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.912Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.921Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.932Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.936Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.947Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.949Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.951Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.954Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:27.978Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:27.992Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:28.132Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:28.140Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:28.143Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:28.145Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:28.199Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:28.207Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:28.229Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:28.250Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:29.306Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:29.320Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:29.482Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:29.507Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:29.550Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:29.572Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:29.588Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:29.597Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:29.732Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:29.737Z  INFO  📊 Down Ask 0.0200
+2026-03-10T09:12:29.809Z  INFO  📊 Up Ask ==========> 0.9900
+2026-03-10T09:12:29.812Z  INFO  📊 Down Ask 0.0200
+
+===== LOG END 2026-03-10T09:12:29.868Z pid=24744 =====
