@@ -63,8 +63,10 @@ async function main() {
 
     const clobClient = await getClobClient();
 
-    // Approve USDC allowances to Polymarket contracts
-    if (clobClient) {
+    // Skip allowances and balance check in simulation mode (no gas needed)
+    if (config.bot.simulationMode) {
+        logger.info("SIMULATION_MODE enabled - skipping allowances and balance check");
+    } else if (clobClient) {
         try {
             logger.info("Approving USDC allowances to Polymarket contracts...");
             await approveUSDCAllowance();
@@ -87,31 +89,30 @@ async function main() {
             `waitForMinimumUsdcBalance ==> ok=${ok} available=${available} allowance=${allowance} balance=${balance}`
         );
         logger.info("Wallet is funded");
-        // Next step:
-        if (config.bot.waitForNextMarketStart) {
-            await waitForNextMarketStart();
-        } else {
-            logger.info("Skipping wait for next 15m market start (resume immediately from state)");
-        }
-        // Delay trading start to allow previous market to become redeemable (~200s) and be redeemed by worker.
-        const copytrade = await CopytradeArbBot.fromEnv(clobClient);
-        
-        // Handle graceful shutdown - generate summaries before exit
-        const shutdown = async (signal: string) => {
-            logger.info(`\n🛑 Received ${signal}, generating final summaries...`);
-            copytrade.stop(); // This will generate all summaries
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Give time for summaries to log
-            process.exit(0);
-        };
-        
-        process.once("SIGINT", () => void shutdown("SIGINT"));
-        process.once("SIGTERM", () => void shutdown("SIGTERM"));
-        
-        await copytrade.start();
-    } else {
-        logger.error("Failed to initialize CLOB client - cannot continue");
-        return;
     }
+
+    // Next step:
+    if (config.bot.waitForNextMarketStart) {
+        await waitForNextMarketStart();
+    } else {
+        logger.info("Skipping wait for next 15m market start (resume immediately from state)");
+    }
+    
+    // Delay trading start to allow previous market to become redeemable (~200s) and be redeemed by worker.
+    const copytrade = await CopytradeArbBot.fromEnv(clobClient);
+    
+    // Handle graceful shutdown - generate summaries before exit
+    const shutdown = async (signal: string) => {
+        logger.info(`\n🛑 Received ${signal}, generating final summaries...`);
+        copytrade.stop(); // This will generate all summaries
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Give time for summaries to log
+        process.exit(0);
+    };
+    
+    process.once("SIGINT", () => void shutdown("SIGINT"));
+    process.once("SIGTERM", () => void shutdown("SIGTERM"));
+    
+    await copytrade.start();
 }
 
 main().catch((error) => {
