@@ -902,6 +902,13 @@ export class CopytradeArbBot {
             return;
         }
 
+        // Skip actual order placement in simulation mode
+        if (config.bot.simulationMode) {
+            const limitCost = limitPrice * this.cfg.sharesPerSide;
+            logger.info(`[SIMULATION] Would place second-side limit order: ${oppositeSide} ${this.cfg.sharesPerSide} shares @ ${limitPrice.toFixed(4)} (${limitCost.toFixed(2)} USDC)`);
+            return;
+        }
+
         const limitOrder: UserOrder = {
             tokenID: oppositeTokenId,
             side: Side.BUY,
