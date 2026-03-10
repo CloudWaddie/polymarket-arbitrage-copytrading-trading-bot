@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  trading-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: polymarket-trading-bot
+    restart: unless-stopped
+    
+    environment:
+      # Windscribe credentials
+      WINDSCRIBE_USERNAME: ${WINDSCRIBE_USERNAME}
+      WINDSCRIBE_PASSWORD: ${WINDSCRIBE_PASSWORD}
+      
+      # Trading bot config
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      COPYTRADE_MARKETS: ${COPYTRADE_MARKETS:-btc}
+      COPYTRADE_SHARES: ${COPYTRADE_SHARES:-5}
+      COPYTRADE_MAX_BUY_COUNTS_PER_SIDE: ${COPYTRADE_MAX_BUY_COUNTS_PER_SIDE:-5}
+      SIMULATION_MODE: ${SIMULATION_MODE:-false}
+      
+      # Logging
+      LOG_DIR: /app/logs
+      LOG_FILE_PREFIX: bot
+    
+    volumes:
+      # Persist logs
+      - ./logs:/app/logs
+      # Persist state files
+      - ./src/data:/app/src/data
+      # Persist .env
+      - ./.env:/app/.env:ro
+    
+    networks:
+      - trading-network
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  trading-network:
+    driver: bridge
