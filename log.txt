@@ -1,0 +1,608 @@
+
+Edward@PC-COLIN MINGW64 ~/polymarket-arbitrage-copytrading-trading-bot (main)
+$ npm start
+
+> polymarket-arbitrage-gabagool-fork@1.0.0 start
+> ts-node src/index.ts
+
+[dotenv@17.3.1] injecting env (9) from .env -- tip: 🛡️ auth for agents: https://vestauth.com
+[2026-03-10T08:56:58.710Z] ℹ️ INFO  Starting the bot...
+2026-03-10T08:56:58.736Z  INFO  wallet address 0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E
+[CLOB Client] request error {"status":400,"statusText":"Bad Request","data":{"error":"Could not create api key"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{},"headers":{"Accept":"*/*","Content-Type":"application/json","POLY_ADDRESS":"0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E","POLY_SIGNATURE":"0xe6fb6efc6463076eedd47effb09ced27411e6dca3e237ae4ea556050904c201315d83dd33156b75dce155755ee12dc9c48e7c9083bdc6cdbc97921bbac9e07ea1c","POLY_TIMESTAMP":"1773133018","POLY_NONCE":"0","User-Agent":"@polymarket/clob-client","Connection":"keep-alive"},"method":"post","url":"https://clob.polymarket.com/auth/api-key","params":{}}}
+2026-03-10T08:56:59.355Z  INFO  Credential created successfully
+[2026-03-10T08:56:59.355Z] ℹ️ INFO  Credentials ready
+[2026-03-10T08:56:59.364Z] ℹ️ INFO  SIMULATION_MODE enabled - skipping allowances and balance check
+[2026-03-10T08:56:59.364Z] ℹ️ INFO  Skipping wait for next 15m market start (resume immediately from state)
+2026-03-10T08:56:59.365Z  INFO  Connecting to WebSocket: wss://ws-subscriptions-clob.polymarket.com/ws/market
+2026-03-10T08:56:59.976Z  INFO  WebSocket connected (market channel)
+2026-03-10T08:56:59.976Z  INFO  Subscribed to 0 token(s) for best_bid_ask updates (custom_feature_enabled: true)
+2026-03-10T08:56:59.977Z  INFO  WebSocket orderbook initialized
+[2026-03-10T08:56:59.977Z] ℹ️ INFO  Approving USDC allowances to Polymarket contracts...
+2026-03-10T08:57:04.122Z  INFO  Approving USDC allowances for address: 0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E, chainId: 137
+2026-03-10T08:57:04.122Z  INFO  RPC: https://rpc-mainnet.matic.quiknode.pro
+2026-03-10T08:57:04.122Z  INFO  USDC Contract: 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174
+2026-03-10T08:57:04.122Z  INFO  ConditionalTokens Contract: 0x4D97DCd97eC945f40cF65F87097ACe5EA0476045
+2026-03-10T08:57:04.123Z  INFO  Exchange Contract: 0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E
+2026-03-10T08:57:05.178Z  INFO  Current CTF allowance: 0, setting to MaxUint256...
+[2026-03-10T08:57:07.830Z] ❌ ERROR Failed to approve USDC allowances Error: insufficient funds for intrinsic transaction cost [ See: https://links.ethers.org/v5-errors-INSUFFICIENT_FUNDS ] (error={"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":56,\"error\":{\"code\":-32000,\"message\":\"insufficient funds for gas * price + value: balance 0, tx cost 22203161548200000, overshot 22203161548200000\"}}\n","error":{"code":-32000},"requestBody":"{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f8b38189808519d90ecafd8519d90ecafd83030d40942791bca1f2de4661ed88a30c99a7a9449aa8417480b844095ea7b30000000000000000000000004d97dcd97ec945f40cf65f87097ace5ea0476045ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc080a0bfb21751d63a7ccecd38ea66cca62d648f7261192a9480a2a2cec403b1f8bcb1a001173472dec2a228f49e0fce531acc4380af501428e208308b84fdd52c40334e\"],\"id\":56,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://rpc-mainnet.matic.quiknode.pro"}, method="sendTransaction", transaction="0x02f8b38189808519d90ecafd8519d90ecafd83030d40942791bca1f2de4661ed88a30c99a7a9449aa8417480b844095ea7b30000000000000000000000004d97dcd97ec945f40cf65f87097ace5ea0476045ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc080a0bfb21751d63a7ccecd38ea66cca62d648f7261192a9480a2a2cec403b1f8bcb1a001173472dec2a228f49e0fce531acc4380af501428e208308b84fdd52c40334e", code=INSUFFICIENT_FUNDS, version=providers/5.8.0)
+    at Logger.makeError (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\logger\src.ts\index.ts:269:28)
+    at Logger.throwError (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\logger\src.ts\index.ts:281:20)
+    at checkError (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\providers\src.ts\json-rpc-provider.ts:98:16)
+    at JsonRpcProvider.<anonymous> (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\providers\src.ts\json-rpc-provider.ts:642:20)
+    at step (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\providers\lib\json-rpc-provider.js:48:23)
+    at Object.throw (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\providers\lib\json-rpc-provider.js:29:53)
+    at rejected (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\providers\lib\json-rpc-provider.js:21:65)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  reason: 'insufficient funds for intrinsic transaction cost',
+  code: 'INSUFFICIENT_FUNDS',
+  error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":56,\"error\":{\"code\":-32000,\"message\":\"insufficient funds for gas * price + value: balance 0, tx cost 22203161548200000, overshot 22203161548200000\"}}\n", error={"code":-32000}, requestBody="{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f8b38189808519d90ecafd8519d90ecafd83030d40942791bca1f2de4661ed88a30c99a7a9449aa8417480b844095ea7b30000000000000000000000004d97dcd97ec945f40cf65f87097ace5ea0476045ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc080a0bfb21751d63a7ccecd38ea66cca62d648f7261192a9480a2a2cec403b1f8bcb1a001173472dec2a228f49e0fce531acc4380af501428e208308b84fdd52c40334e\"],\"id\":56,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="https://rpc-mainnet.matic.quiknode.pro", code=SERVER_ERROR, version=web/5.8.0)
+      at Logger.makeError (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\logger\src.ts\index.ts:269:28)
+      at Logger.throwError (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\logger\src.ts\index.ts:281:20)
+      at C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\src.ts\index.ts:341:28
+      at step (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\lib\index.js:33:23)
+      at Object.next (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\lib\index.js:14:53)
+      at fulfilled (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\lib\index.js:5:58)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+    reason: 'processing response error',
+    code: 'SERVER_ERROR',
+    body: '{"jsonrpc":"2.0","id":56,"error":{"code":-32000,"message":"insufficient funds for gas * price + value: balance 0, tx cost 22203161548200000, overshot 22203161548200000"}}\n',
+    error: Error: insufficient funds for gas * price + value: balance 0, tx cost 22203161548200000, overshot 22203161548200000
+        at getResult (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\providers\src.ts\json-rpc-provider.ts:142:28)
+        at processJsonFunc (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\src.ts\index.ts:383:22)
+        at C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\src.ts\index.ts:320:42
+        at step (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\lib\index.js:33:23)
+        at Object.next (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\lib\index.js:14:53)
+        at fulfilled (C:\Users\Edward\polymarket-arbitrage-copytrading-trading-bot\node_modules\@ethersproject\web\lib\index.js:5:58)
+        at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+      code: -32000,
+      data: undefined
+    },
+    requestBody: '{"method":"eth_sendRawTransaction","params":["0x02f8b38189808519d90ecafd8519d90ecafd83030d40942791bca1f2de4661ed88a30c99a7a9449aa8417480b844095ea7b30000000000000000000000004d97dcd97ec945f40cf65f87097ace5ea0476045ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc080a0bfb21751d63a7ccecd38ea66cca62d648f7261192a9480a2a2cec403b1f8bcb1a001173472dec2a228f49e0fce531acc4380af501428e208308b84fdd52c40334e"],"id":56,"jsonrpc":"2.0"}',
+    requestMethod: 'POST',
+    url: 'https://rpc-mainnet.matic.quiknode.pro'
+  },
+  method: 'sendTransaction',
+  transaction: {
+    type: 2,
+    chainId: 137,
+    nonce: 0,
+    maxPriorityFeePerGas: BigNumber { _hex: '0x19d90ecafd', _isBigNumber: true },
+    maxFeePerGas: BigNumber { _hex: '0x19d90ecafd', _isBigNumber: true },
+    gasPrice: null,
+    gasLimit: BigNumber { _hex: '0x030d40', _isBigNumber: true },
+    to: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+    value: BigNumber { _hex: '0x00', _isBigNumber: true },
+    data: '0x095ea7b30000000000000000000000004d97dcd97ec945f40cf65f87097ace5ea0476045ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff',
+    accessList: [],
+    hash: '0xd8a9ff9d7dedec0a9936a21cfa8fcc8efa51b28f355163e1a5a6aec84268bece',
+    v: 0,
+    r: '0xbfb21751d63a7ccecd38ea66cca62d648f7261192a9480a2a2cec403b1f8bcb1',
+    s: '0x01173472dec2a228f49e0fce531acc4380af501428e208308b84fdd52c40334e',
+    from: '0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E',
+    confirmations: 0
+  },
+  transactionHash: '0xd8a9ff9d7dedec0a9936a21cfa8fcc8efa51b28f355163e1a5a6aec84268bece'
+}
+[2026-03-10T08:57:07.844Z] ❌ ERROR Continuing without allowances - orders may fail
+2026-03-10T08:57:08.965Z  DEBUG  Balance check: Total=0, Reserved=0, Available=0
+2026-03-10T08:57:08.965Z  INFO  ═══════════════════════════════════════
+2026-03-10T08:57:08.965Z  INFO  💰 WALLET BALANCE & ALLOWANCE
+2026-03-10T08:57:08.965Z  INFO  ═══════════════════════════════════════
+2026-03-10T08:57:08.965Z  INFO  USDC Balance: 0.000000
+2026-03-10T08:57:08.965Z  INFO  USDC Allowance: 0.000000
+2026-03-10T08:57:08.966Z  INFO  Available: 0.000000 (Balance: 0.000000, Allowance: 0.000000)
+2026-03-10T08:57:08.966Z  INFO  ═══════════════════════════════════════
+2026-03-10T08:57:08.966Z  INFO  USDC gate: available=0.000000 (balance=0.000000, allowance=0.000000), required>=1
+2026-03-10T08:57:10.271Z  ERROR  WebSocket closed: 1006
+2026-03-10T08:57:10.272Z  INFO  Reconnecting in 0ms (attempt 1/20)...
+2026-03-10T08:57:10.281Z  INFO  Connecting to WebSocket: wss://ws-subscriptions-clob.polymarket.com/ws/market
+2026-03-10T08:57:10.885Z  INFO  WebSocket connected (market channel)
+2026-03-10T08:57:10.885Z  INFO  Subscribed to 0 token(s) for best_bid_ask updates (custom_feature_enabled: true)
+2026-03-10T08:57:21.191Z  ERROR  WebSocket closed: 1006
+2026-03-10T08:57:21.191Z  INFO  Reconnecting in 0ms (attempt 1/20)...
+2026-03-10T08:57:21.191Z  INFO  Connecting to WebSocket: wss://ws-subscriptions-clob.polymarket.com/ws/market
+2026-03-10T08:57:21.755Z  INFO  WebSocket connected (market channel)
+2026-03-10T08:57:21.755Z  INFO  Subscribed to 0 token(s) for best_bid_ask updates (custom_feature_enabled: true)
+
+
+Edward@PC-COLIN MINGW64 ~/polymarket-arbitrage-copytrading-trading-bot (main)
+$ npm start
+
+> polymarket-arbitrage-gabagool-fork@1.0.0 start
+> ts-node src/index.ts
+
+[dotenv@17.3.1] injecting env (9) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[2026-03-10T08:58:46.516Z] ℹ️ INFO  Starting the bot...
+2026-03-10T08:58:46.545Z  INFO  wallet address 0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E
+[CLOB Client] request error {"status":400,"statusText":"Bad Request","data":{"error":"Could not create api key"},"config":{"transitional":{"silentJSONParsing":true,"forcedJSONParsing":true,"clarifyTimeoutError":false},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1,"env":{},"headers":{"Accept":"*/*","Content-Type":"application/json","POLY_ADDRESS":"0xD003B21a3D22103A7BB5451dE600EA18Fdf50c9E","POLY_SIGNATURE":"0x5686dd41791235237faafc32d0cd0299f435e509b070f2d616c227f007a31a08430d887214dbf8f434a5074273a31b7faefb45595f18bb060ed5f19fc0928b8f1b","POLY_TIMESTAMP":"1773133126","POLY_NONCE":"0","User-Agent":"@polymarket/clob-client","Connection":"keep-alive"},"method":"post","url":"https://clob.polymarket.com/auth/api-key","params":{}}}
+2026-03-10T08:58:47.154Z  INFO  Credential created successfully
+[2026-03-10T08:58:47.154Z] ℹ️ INFO  Credentials ready
+[2026-03-10T08:58:47.157Z] ℹ️ INFO  SIMULATION_MODE enabled - skipping allowances and balance check
+[2026-03-10T08:58:47.157Z] ℹ️ INFO  Skipping wait for next 15m market start (resume immediately from state)
+2026-03-10T08:58:47.158Z  INFO  Connecting to WebSocket: wss://ws-subscriptions-clob.polymarket.com/ws/market
+2026-03-10T08:58:47.750Z  INFO  WebSocket connected (market channel)
+2026-03-10T08:58:47.751Z  INFO  Subscribed to 0 token(s) for best_bid_ask updates (custom_feature_enabled: true)
+2026-03-10T08:58:47.751Z  INFO  WebSocket orderbook initialized
+2026-03-10T08:58:47.751Z  INFO  Starting CopytradeArbBot for markets: btc
+2026-03-10T08:58:47.752Z  INFO  Initializing market btc with slug btc-updown-15m-1773132300
+2026-03-10T08:58:47.814Z  INFO  Subscribed to 2 new token(s) (custom_feature_enabled: true)
+2026-03-10T08:58:48.111Z  DEBUG  Unknown message type: unknown
+2026-03-10T08:58:48.111Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.121Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.135Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.175Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.392Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.392Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.393Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.393Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.393Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.394Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.394Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.394Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.461Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.560Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.677Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.703Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.735Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:48.773Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.076Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.099Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.139Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.169Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.284Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.362Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.476Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.510Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.535Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.545Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.564Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.626Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.627Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.703Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.707Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.710Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.713Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.771Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.781Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.802Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.883Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.900Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.945Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.954Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.963Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:49.993Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.277Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.301Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.340Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.371Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.373Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.391Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.439Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.688Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.698Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.740Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.751Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.763Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:50.802Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.078Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.097Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.154Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.181Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.222Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.222Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.237Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.260Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.482Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.482Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.483Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.498Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.517Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.543Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.575Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.809Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.810Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.810Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.810Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.810Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.876Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.900Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.904Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.914Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.917Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.925Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.939Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.967Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:51.971Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.015Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.015Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.238Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.292Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.303Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.336Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.337Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.337Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.338Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.339Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.340Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.341Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.342Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.342Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.343Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.345Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.370Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.373Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.627Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.676Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.711Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.743Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.767Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:52.997Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.076Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.099Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.100Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.143Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.170Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.477Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.498Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.551Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.584Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.692Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.720Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.720Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.720Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.808Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.883Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.904Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.905Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.948Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:53.975Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.045Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.055Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.056Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.097Z  INFO  📊 Up Ask ==========> 0.0010
+2026-03-10T08:58:54.098Z  INFO  📊 Down Ask 1.0000
+2026-03-10T08:58:54.099Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.099Z  DEBUG  Unknown message type: book
+2026-03-10T08:58:54.100Z  DEBUG  Unknown message type: book
+2026-03-10T08:58:54.127Z  DEBUG  Unknown message type: last_trade_price
+2026-03-10T08:58:54.278Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.309Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.350Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.367Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.370Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.385Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.437Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.473Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.478Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.490Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.594Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.633Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.639Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.679Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.699Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.717Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.740Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.740Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.740Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.745Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.766Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.768Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.800Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.950Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.951Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:54.999Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.075Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.097Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.135Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.145Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.288Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.289Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.289Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.357Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.482Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.484Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.496Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.545Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.575Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.681Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.695Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.704Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.724Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.738Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.778Z  INFO  📊 Up Ask ==========> 0.0010
+2026-03-10T08:58:55.779Z  INFO  📊 Down Ask 1.0000
+2026-03-10T08:58:55.786Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.786Z  DEBUG  Unknown message type: book
+2026-03-10T08:58:55.789Z  DEBUG  Unknown message type: book
+2026-03-10T08:58:55.791Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.791Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.792Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.815Z  DEBUG  Unknown message type: last_trade_price
+2026-03-10T08:58:55.878Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.907Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.947Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.986Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:55.987Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.297Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.323Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.447Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.559Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.653Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.678Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.704Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.761Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.787Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.866Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.899Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:56.940Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.081Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.097Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.099Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.148Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.158Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.172Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.189Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.189Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.233Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.375Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.376Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.376Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.377Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.378Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.378Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.381Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.381Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.381Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.382Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.481Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.517Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.537Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.548Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.561Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.574Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.575Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.612Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.676Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.719Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.879Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.899Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.955Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:57.981Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.025Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.083Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.275Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.301Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.358Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.373Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.638Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.681Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.700Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.756Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.788Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.870Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.930Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.930Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.936Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.976Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:58.976Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.075Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.103Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.154Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.179Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.221Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.245Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.478Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.478Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.497Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.554Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.576Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.688Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.712Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.743Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.876Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.899Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.967Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.967Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:58:59.981Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.065Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.098Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.098Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.140Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.140Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.173Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.173Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.176Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.176Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.176Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.176Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.193Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.193Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.196Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.222Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.223Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.281Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.300Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.311Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.316Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.316Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.359Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.360Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.395Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.401Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.420Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.454Z  INFO  📊 Up Ask ==========> 0.0010
+2026-03-10T08:59:00.455Z  INFO  📊 Down Ask 1.0000
+2026-03-10T08:59:00.455Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.455Z  DEBUG  Unknown message type: book
+2026-03-10T08:59:00.455Z  DEBUG  Unknown message type: book
+2026-03-10T08:59:00.455Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.472Z  INFO  📊 Up Ask ==========> 0.0010
+2026-03-10T08:59:00.474Z  INFO  📊 Down Ask 1.0000
+2026-03-10T08:59:00.475Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.501Z  DEBUG  Unknown message type: book
+2026-03-10T08:59:00.501Z  DEBUG  Unknown message type: book
+2026-03-10T08:59:00.502Z  DEBUG  Unknown message type: last_trade_price
+2026-03-10T08:59:00.502Z  DEBUG  Unknown message type: last_trade_price
+2026-03-10T08:59:00.530Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.536Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.593Z  INFO  📊 Up Ask ==========> 0.0010
+2026-03-10T08:59:00.594Z  INFO  📊 Down Ask 1.0000
+2026-03-10T08:59:00.594Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.598Z  DEBUG  Unknown message type: book
+2026-03-10T08:59:00.599Z  DEBUG  Unknown message type: book
+2026-03-10T08:59:00.620Z  DEBUG  Unknown message type: last_trade_price
+2026-03-10T08:59:00.632Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.661Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.677Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.678Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.709Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.780Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.789Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.852Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:00.872Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.059Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.059Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.090Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.091Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.091Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.091Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.091Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.091Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.092Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.092Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.092Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.092Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.092Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.092Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.099Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.133Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.139Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.172Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.177Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.196Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.481Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.503Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.535Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.583Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.586Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.622Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.851Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.852Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.879Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:01.899Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.099Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.159Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.179Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.248Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.279Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.298Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.304Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.417Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.418Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.419Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.421Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.422Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.430Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.434Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.434Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.434Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.435Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.554Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.677Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.700Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.874Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.973Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:02.979Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.078Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.102Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.176Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.235Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.372Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.468Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.478Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.502Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.532Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.533Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.576Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.576Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.605Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.721Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.769Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.770Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.771Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.772Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.774Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.816Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.816Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.877Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:03.900Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.071Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.094Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.111Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.166Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.166Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.213Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.275Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.299Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.452Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.474Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.481Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.512Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.536Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.625Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.681Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.708Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.709Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.716Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.746Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.834Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.862Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.863Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.895Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:04.938Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.078Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.103Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.117Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.131Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.146Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.172Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.177Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.177Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.198Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.391Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.482Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.506Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.566Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.622Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.732Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.841Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.970Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.971Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.974Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.996Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.997Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.997Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.997Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.997Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:05.997Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.226Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.276Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.298Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.323Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.416Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.482Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.730Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.731Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.733Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.773Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.970Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.986Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:06.992Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.052Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.078Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.093Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.098Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.143Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.177Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.219Z  DEBUG  Unknown message type: price_change
+2026-03-10T08:59:07.446Z  DEBUG  Unknown message type: price_change

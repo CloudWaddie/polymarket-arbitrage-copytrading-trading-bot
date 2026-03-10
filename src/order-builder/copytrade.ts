@@ -4,6 +4,7 @@ import * as path from "path";
 import { logger } from "../utils/logger";
 import { config } from "../config";
 import { addHoldings } from "../utils/holdings";
+import { recordTrade } from "../utils/pnlTracker";
 import { WebSocketOrderBook, TokenPrice } from "../providers/websocketOrderbook";
 import { AdaptivePricePredictor, PricePrediction } from "../utils/pricePredictor";
 // Helper functions for market slug and token IDs
@@ -1182,7 +1183,12 @@ export class CopytradeArbBot {
                     const newlyFilled = sizeMatched - lastLoggedSize;
                     if (newlyFilled > 0) {
                         // Log holdings for redemption - use conditionId as the key, not market name
+                        // Log holdings for redemption - use conditionId as the key, not market name
                         addHoldings(conditionId, tokenID, newlyFilled);
+                        
+                        // Record trade for P&L tracking
+                        const tokenType = leg === "YES" ? "UP" : "DOWN";
+                        recordTrade(market, slug, conditionId, tokenID, tokenType, newlyFilled, askPrice);
                         logger.info(`✅ ${leg} order ${orderID} filled: ${newlyFilled} shares (total matched: ${sizeMatched}/${estimatedShares})`);
                         lastLoggedSize = sizeMatched;
                     }

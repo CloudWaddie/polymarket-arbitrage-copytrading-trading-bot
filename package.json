@@ -7,6 +7,9 @@
     "redeem": "ts-node src/redeem.ts",
     "redeem:holdings": "ts-node src/redeem-holdings.ts",
     "redeem:proxy": "ts-node src/redeem-proxy.ts",
+    "pnl:summary": "ts-node src/cli/pnl.ts summary",
+    "pnl:export": "ts-node src/cli/pnl.ts export",
+    "pnl:market": "ts-node src/cli/pnl.ts market",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
